@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableString
 import android.text.style.StyleSpan
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.Menu
@@ -38,7 +39,7 @@ class FilmListScreen : Fragment(), MenuProvider{
         binding.recView.adapter = adapter
         adapter.longTap = {
             viewModel.addToFavoutite(it.kinopoiskId)
-            adapter.notifyDataSetChanged()
+            adapter.notifyItemChanged(it.id)
         }
         adapter.clickTap = {
             viewModel.setDetail(it.kinopoiskId)
@@ -47,6 +48,12 @@ class FilmListScreen : Fragment(), MenuProvider{
         viewModel.shopList.observe(viewLifecycleOwner){
             adapter.submitList(it)
         }
+        increasePool()
+    }
+
+    private fun increasePool() {
+        binding.recView.recycledViewPool.setMaxRecycledViews(R.layout.film_item,10)
+        binding.recView.recycledViewPool.setMaxRecycledViews(R.layout.fav_film_item,10)
     }
 
     override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {

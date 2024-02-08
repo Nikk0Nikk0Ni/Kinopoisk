@@ -20,4 +20,10 @@ data class FilmItem(
     val genres : List<Genres>,
     @ColumnInfo
     var isFavourite : Boolean,
+    var id : Int = UNDEFIND_ID
 )
+{
+    companion object{
+        var UNDEFIND_ID = -1
+    }
+}

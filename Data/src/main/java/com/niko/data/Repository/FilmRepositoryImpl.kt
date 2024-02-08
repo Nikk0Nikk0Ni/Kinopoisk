@@ -1,6 +1,5 @@
 package com.niko.data.Repository
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.niko.data.API.film_api
@@ -22,6 +21,9 @@ object FilmRepositoryImpl : FilmRepository {
         CoroutineScope(Dispatchers.IO).launch {
             val api_list = async { film_api.getFilms("RATING").items }
             popList = api_list.await()
+            popList.forEach{
+                it.id = popList.indexOf(it)
+            }
             getFilmList()
         }
     }

@@ -12,17 +12,13 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import com.niko.cleanarchitecturebydaun.FilmAdapter
+import com.niko.cleanarchitecturebydaun.RecycleAdapter.FilmAdapter
 import com.niko.cleanarchitecturebydaun.R
 import com.niko.cleanarchitecturebydaun.ViewModel.ViewModelForPop
 import com.niko.cleanarchitecturebydaun.databinding.FragmentFilmListScreenBinding
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 class FilmListScreen : Fragment(), MenuProvider{
     private lateinit var binding : FragmentFilmListScreenBinding
@@ -42,6 +38,7 @@ class FilmListScreen : Fragment(), MenuProvider{
         binding.recView.adapter = adapter
         adapter.longTap = {
             viewModel.addToFavoutite(it.kinopoiskId)
+            adapter.notifyDataSetChanged()
         }
         adapter.clickTap = {
             viewModel.setDetail(it.kinopoiskId)

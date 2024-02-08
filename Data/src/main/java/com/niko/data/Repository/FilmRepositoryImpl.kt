@@ -1,5 +1,6 @@
 package com.niko.data.Repository
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.niko.data.API.film_api
@@ -40,6 +41,7 @@ object FilmRepositoryImpl : FilmRepository {
         if (element != null && !element.isFavourite) {
             popList.find { it.kinopoiskId == itemId }?.isFavourite = true
             getFavList()
+            getFilmList()
         }
     }
 

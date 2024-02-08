@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableString
 import android.text.style.StyleSpan
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.Menu
@@ -16,11 +15,10 @@ import android.view.ViewGroup
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import com.niko.cleanarchitecturebydaun.FilmAdapter
+import com.niko.cleanarchitecturebydaun.RecycleAdapter.FilmAdapter
 import com.niko.cleanarchitecturebydaun.R
 import com.niko.cleanarchitecturebydaun.ViewModel.ViewModelForFav
 import com.niko.cleanarchitecturebydaun.databinding.FragmentFavFilListScreenBinding
-import com.niko.data.Repository.FilmRepositoryImpl
 
 class FavFilListScreen : Fragment(), MenuProvider {
     private lateinit var binding : FragmentFavFilListScreenBinding

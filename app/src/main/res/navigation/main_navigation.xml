@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/filmListScreen">
+
+    <fragment
+        android:id="@+id/filmListScreen"
+        android:name="com.niko.cleanarchitecturebydaun.Fragments.FilmListScreen"
+        android:label="fragment_film_list_screen"
+        tools:layout="@layout/fragment_film_list_screen" >
+        <action
+            android:id="@+id/action_filmListScreen_to_favFilListScreen"
+            app:destination="@id/favFilListScreen" />
+        <action
+            android:id="@+id/action_filmListScreen_to_filmDetail"
+            app:destination="@id/filmDetail" />
+    </fragment>
+    <fragment
+        android:id="@+id/favFilListScreen"
+        android:name="com.niko.cleanarchitecturebydaun.Fragments.FavFilListScreen"
+        android:label="fragment_fav_fil_list_screen"
+        tools:layout="@layout/fragment_fav_fil_list_screen" >
+        <action
+            android:id="@+id/action_favFilListScreen_to_filmListScreen"
+            app:destination="@id/filmListScreen" />
+        <action
+            android:id="@+id/action_favFilListScreen_to_filmDetail"
+            app:destination="@id/filmDetail" />
+    </fragment>
+    <fragment
+        android:id="@+id/filmDetail"
+        android:name="com.niko.cleanarchitecturebydaun.Fragments.FilmDetail"
+        android:label="fragment_film_detail"
+        tools:layout="@layout/fragment_film_detail" />
+</navigation>
